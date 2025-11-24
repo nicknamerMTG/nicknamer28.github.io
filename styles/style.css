@@ -47,10 +47,11 @@ h1, h2 {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.25s ease;
 }
 
 .gallery img:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 footer {
