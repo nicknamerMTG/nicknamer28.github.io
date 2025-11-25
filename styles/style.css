@@ -2,7 +2,7 @@ body {
     font-family: "Inter", Arial, sans-serif;
     margin: 0;
     background: #333333;
-    color: #222;
+    color: #000000;
 }
 
 header {
@@ -15,7 +15,7 @@ header {
 }
 
 header a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     margin: 0 15px;
     font-weight: 500;
@@ -72,8 +72,12 @@ h1, h2 {
 
 /* sanfter Hover-Zoom für Galerie */
 .gallery img {
-    transition: transform 0.25s ease;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
 }
+
 
 .gallery img:hover {
     transform: scale(1.03);
