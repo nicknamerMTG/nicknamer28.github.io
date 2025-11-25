@@ -55,36 +55,44 @@
 
 </main>
 
-<!-- Illustrationen Lightbox -->
-<div id="img1" class="lightbox"><a href="#"><img src="assets/images/Illustration1.jpg"></a></div>
-<div id="img2" class="lightbox"><a href="#"><img src="assets/images/Illustration2.jpg"></a></div>
-<div id="img3" class="lightbox"><a href="#"><img src="assets/images/Illustration3.jpg"></a></div>
-<div id="img4" class="lightbox"><a href="#"><img src="assets/images/Illustration4.jpg"></a></div>
-<div id="img5" class="lightbox"><a href="#"><img src="assets/images/Illustration5.jpg"></a></div>
+<!-- Einzige Lightbox -->
+<div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="">
+    <div class="nav left">&#10094;</div>
+    <div class="nav right">&#10095;</div>
+</div>
 
-<!-- Sketches Lightbox -->
-<div id="sk1" class="lightbox"><a href="#"><img src="assets/sketches/sketch01.jpg"></a></div>
-<div id="sk2" class="lightbox"><a href="#"><img src="assets/sketches/sketch02.jpg"></a></div>
-<div id="sk3" class="lightbox"><a href="#"><img src="assets/sketches/sketch03.jpg"></a></div>
-<div id="sk4" class="lightbox"><a href="#"><img src="assets/sketches/sketch04.jpg"></a></div>
-<div id="sk5" class="lightbox"><a href="#"><img src="assets/sketches/sketch05.jpg"></a></div>
-<div id="sk6" class="lightbox"><a href="#"><img src="assets/sketches/sketch06.jpg"></a></div>
-<div id="sk7" class="lightbox"><a href="#"><img src="assets/sketches/sketch07.jpg"></a></div>
-<div id="sk8" class="lightbox"><a href="#"><img src="assets/sketches/sketch08.jpg"></a></div>
-<div id="sk9" class="lightbox"><a href="#"><img src="assets/sketches/sketch09.jpg"></a></div>
-<div id="sk10" class="lightbox"><a href="#"><img src="assets/sketches/sketch10.jpg"></a></div>
-<div id="sk11" class="lightbox"><a href="#"><img src="assets/sketches/sketch11.jpg"></a></div>
-<div id="sk12" class="lightbox"><a href="#"><img src="assets/sketches/sketch12.jpg"></a></div>
-<div id="sk13" class="lightbox"><a href="#"><img src="assets/sketches/sketch13.jpg"></a></div>
-<div id="sk14" class="lightbox"><a href="#"><img src="assets/sketches/sketch14.jpg"></a></div>
-<div id="sk15" class="lightbox"><a href="#"><img src="assets/sketches/sketch15.jpg"></a></div>
-<div id="sk16" class="lightbox"><a href="#"><img src="assets/sketches/sketch16.jpg"></a></div>
-<div id="sk17" class="lightbox"><a href="#"><img src="assets/sketches/sketch17.jpg"></a></div>
-<div id="sk18" class="lightbox"><a href="#"><img src="assets/sketches/sketch18.jpg"></a></div>
 
 <footer>
     © 2025 Nick – Art Portfolio
 </footer>
+
+<script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const images = document.querySelectorAll(".gallery img");
+    let index = 0;
+
+    function showImage(i) {
+        index = i;
+        lightboxImg.src = images[i].src;
+        lightbox.classList.add("active");
+    }
+
+    images.forEach((img, i) => {
+        img.addEventListener("click", () => showImage(i));
+    });
+
+    document.querySelector(".close").onclick = () => lightbox.classList.remove("active");
+
+    lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) lightbox.classList.remove("active");
+    });
+
+    document.querySelector(".nav.left").onclick = () => showImage((index - 1 + images.length) % images.length);
+    document.querySelector(".nav.right").onclick = () => showImage((index + 1) % images.length);
+</script>
 
 </body>
 </html>

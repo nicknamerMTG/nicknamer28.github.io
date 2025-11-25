@@ -42,42 +42,67 @@ h1, h2 {
     margin-top: 20px;
 }
 
-/* Lightbox Grundstruktur */
+/* Lightbox */
 .lightbox {
     display: none;
     position: fixed;
     z-index: 9999;
-    padding: 40px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    inset: 0;
+    background: rgba(0,0,0,0.85);
     justify-content: center;
     align-items: center;
 }
 
-/* Wenn das Ziel (#img1, #sk1, …) aktiv ist */
-.lightbox:target {
+.lightbox.active {
     display: flex;
 }
 
-/* Bild in der Lightbox */
 .lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 90vw;
+    max-height: 90vh;
     border-radius: 10px;
     box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-/* sanfter Hover-Zoom für Galerie */
-.gallery img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
+/* Schließen-Button */
+.lightbox .close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
 }
 
+/* Navigation */
+.lightbox .nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    padding: 20px;
+}
+
+.lightbox .nav.left {
+    left: 20px;
+}
+
+.lightbox .nav.right {
+    right: 20px;
+}
+
+/* Galerie-Thumbnails */
+.gallery img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.25s ease;
+}
 
 .gallery img:hover {
     transform: scale(1.03);
